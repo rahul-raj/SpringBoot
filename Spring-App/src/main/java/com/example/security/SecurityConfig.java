@@ -14,8 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests().
-		antMatchers("/","/index").hasRole("USER")
-		.antMatchers("/courses/**").hasRole("USER")
+		antMatchers("/","/index","/courses/**").hasRole("USER")
 		.and().formLogin().loginPage("/login").failureUrl("/login-error");
 	}
 	
