@@ -15,7 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		http.authorizeRequests().
 		antMatchers("/","/index","/courses/**").hasRole("USER")
-		.and().formLogin().loginPage("/login").failureUrl("/login-error");
+		.and().formLogin().loginPage("/login").failureUrl("/login-error")
+		;
 	}
 	
 	@Autowired
