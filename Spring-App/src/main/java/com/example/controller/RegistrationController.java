@@ -1,5 +1,9 @@
 package com.example.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,9 +26,10 @@ public class RegistrationController {
     }
 	
 	@PostMapping("/register")
-	public void registerUser(User user) {
+	public void registerUser(User user, HttpServletResponse response) throws IOException {
 		user.setPassword(passwordEncoder().encode(user.getPassword()));
 		registrationService.addUser(user);
+		response.sendRedirect("/login");
 	}
 
 }
